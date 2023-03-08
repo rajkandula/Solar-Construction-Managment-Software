@@ -1,6 +1,5 @@
 // Setup server, session and middleware here.
 // Setup server, session and middleware here.
-
 const express = require("express");
 const app = express();
 const session = require("express-session");
@@ -8,9 +7,15 @@ const configRoutes = require("./routes");
 
 const exphbs = require("express-handlebars");
 
+const static = express.static(__dirname + "/public");
+app.use("/public", static);
+
 //app.use("/public", static);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//session expire
+app.use(session({ secret: "Key", cookie: { maxAge: 600000 } }));
 
 app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");

@@ -19,4 +19,8 @@ const getCollectionFn = (collection) => {
 NOTE: YOU WILL NEED TO CHANGE THE CODE BELOW TO HAVE THE COLLECTION(S) REQUIRED BY THE ASSIGNMENT */
 module.exports = {
   users: getCollectionFn("users"),
+  instructor: getCollectionFn("intructor"),
+  courses: getCollectionFn("courses"),
+  feedback: getCollectionFn("feedback"),
+  quizQuestions: getCollectionFn("quizQuestions"),
 };

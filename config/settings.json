@@ -1,6 +1,6 @@
 {
   "mongoConfig": {
     "serverUrl": "mongodb://localhost:27017/",
-    "database": "Charan_raj_kandula_lab10"
+    "database": "Online_Course_Website_Project"
   }
 }
