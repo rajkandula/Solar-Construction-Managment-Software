@@ -2,6 +2,8 @@
 
 Product Link(website): https://solar-project-e77fc.web.app/
 
+Jira: https://team15agile1.atlassian.net/jira/core/projects/ST/board
+
 [![Solar Project Management 2023- team 15(AgSp)](https://img.youtube.com/vi/8tX7jDgXXX0/1.jpg)](https://youtu.be/8tX7jDgXXX0)
 
 # Landing Update
