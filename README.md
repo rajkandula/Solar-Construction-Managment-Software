@@ -29,3 +29,13 @@ Jira: https://team15agile1.atlassian.net/jira/core/projects/ST/board
 # Contruction crew Page
 <img width="1440" alt="Screenshot 2023-03-31 at 3 32 06 PM" src="https://user-images.githubusercontent.com/112989454/229212513-67e18ad9-a148-4e1a-9870-dd4828d19461.png">
 
+
+# Operations Managers Dashboard
+<img width="1440" alt="Screenshot 2023-04-10 at 2 01 16 PM" src="https://user-images.githubusercontent.com/112989454/230962988-e057b2df-5034-4aac-a498-b4c85769ad41.png">
+
+
+# end-coustomer page
+<img width="1440" alt="Screenshot 2023-04-10 at 1 58 34 PM" src="https://user-images.githubusercontent.com/112989454/230963008-33153bff-f2c6-4c42-b611-560eacaa5221.png">
+
+
+
