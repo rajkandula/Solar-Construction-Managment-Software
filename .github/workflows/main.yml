@@ -1,51 +1,18 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
     branches:
       - main
-      - release/*
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Build
-      run: npm run build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Build and deploy
+    - name: Run linter
       run: |
-        npm run build
-        # Add your deployment commands here, e.g., uploading to a hosting service, deploying to a server, etc.
+        # Your linting command here
