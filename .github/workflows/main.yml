@@ -22,3 +22,14 @@ jobs:
     - name: Deploy HTML template
       run: |
         # Add deployment script here, e.g., using FTP, SFTP, or any other method you prefer
+        
+        
+    - name: Deploy HTML template
+  run: |
+    # Install lftp
+    sudo apt-get update
+    sudo apt-get install lftp -y
+
+    # Connect to FTP server and deploy files
+    lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_HOST; mirror -R -e ./dist /remote/path"
+
