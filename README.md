@@ -9,4 +9,4 @@ Check our project WIKI page: https://github.com/rajkandula/CS555-Project/wiki
 [![Solar Project Management 2023- team 15(AgSp)](https://img.youtube.com/vi/8tX7jDgXXX0/1.jpg)](https://youtu.be/8tX7jDgXXX0)
 
 # Landing Update
-<img width="1440" alt="Screenshot 2023-03-29 at 1 54 40 AM" src="https://user-images.githubusercontent.com/112989454/228439417-6b59ba6b-9178-457f-9245-eb01df743f9f.png">
+<img width="1440" alt="Screenshot 2023-04-11 at 2 45 30 PM" src="https://user-images.githubusercontent.com/112989454/231259588-6de2aa9e-1385-41c1-862d-432670988069.png">
