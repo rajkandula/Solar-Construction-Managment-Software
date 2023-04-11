@@ -1,0 +1,8 @@
+- name: Deploy HTML template
+  run: |
+    # Install lftp
+    sudo apt-get update
+    sudo apt-get install lftp -y
+
+    # Connect to FTP server and deploy files
+    lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_HOST; mirror -R -e ./dist /remote/path"
