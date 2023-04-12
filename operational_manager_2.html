@@ -55,54 +55,55 @@
             <li>
               <a class="nav-link scrollto active" href="index.html">Home</a>
             </li>
-            <li>
-              <a class="nav-link scrollto" href="learnmore.html">About</a>
-            </li>
+
             <li>
               <a class="nav-link scrollto" href="servicepage.html">Services</a>
             </li>
             <li>
-              <a class="nav-link scrollto" href="#portfolio">Portfolio</a>
+              <a class="nav-link scrollto" href="index.html">Portfolio</a>
             </li>
-            <li>
-              <a class="nav-link scrollto" href="salespage.html">Sales</a>
-            </li>
-            <li>
-              <a class="nav-link scrollto" href="construction_crew.html"
-                >Contruction Crew Team</a
-              >
-            </li>
+
             <li class="dropdown">
               <a href="#"
-                ><span>Other Operations</span> <i class="bi bi-chevron-down"></i
+                ><span>Our Operations</span> <i class="bi bi-chevron-down"></i
               ></a>
               <ul>
                 <li>
-                  <a href="operational_manager.html"
-                    >Connecting Operational Mannagers team 1</a
+                  <a class="nav-link scrollto" href="salespage.html">Sales</a>
+                </li>
+                <li>
+                  <a class="nav-link scrollto" href="construction_crew.html"
+                    >Contruction Crew Team</a
                   >
                 </li>
                 <li>
+                  <a href="endcoustomer.html">End-Coustomer</a>
+                </li>
+
+                <li>
+                  <a href="operational_manager.html"> Operational Mannagers</a>
+                </li>
+
+                <li>
                   <a href="operational_manager_2.html"
-                    >Connecting Operational Mannagers team 2</a
+                    >Operational Mannagers 2</a
                   >
                 </li>
-                <li class="dropdown">
-                  <a href="endcoustomer.html"
-                    ><span>end-customers</span>
-                    <i class="bi bi-chevron-right"></i
-                  ></a>
-                  <!-- <ul>
-                    <li><a href="#">Deep Drop Down 1</a></li>
-                    <li><a href="#">Deep Drop Down 2</a></li>
-                    <li><a href="#">Deep Drop Down 3</a></li>
-                    <li><a href="#">Deep Drop Down 4</a></li>
-                    <li><a href="#">Deep Drop Down 5</a></li>
-                  </ul> -->
-                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#"
+                ><span>More</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
                 <li><a href="#">Solar Pricing</a></li>
                 <li><a href="#">Solar News</a></li>
                 <li><a href="#">Solar Blog</a></li>
+
+                <li>
+                  <a class="nav-link scrollto" href="learnmore.html">About</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -223,6 +224,77 @@
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End #main -->
+
+    <!-- <main id="mainsales"></main> -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Operations Managers Dashboard</h2>
+          <hr />
+          <h3>System Performance</h3>
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-striped bg-success"
+              role="progressbar"
+              style="width: 80%"
+              aria-valuenow="80"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          <p>Current Energy Production: 350 kW</p>
+          <p>System Uptime: 99.8%</p>
+          <p>Maintenance Schedule:</p>
+          <ul>
+            <li>Panel Cleaning: Every 6 months</li>
+            <li>Inverter Maintenance: Every 2 years</li>
+            <li>Battery Replacement: Every 5 years</li>
+          </ul>
+          <h3>Work Orders</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Replace Inverter</td>
+                <td>In Progress</td>
+                <td>John Smith</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Repair Panel</td>
+                <td>Open</td>
+                <td>Jane Doe</td>
+                <td>Medium</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <h3>Notifications</h3>
+          <div class="alert alert-info" role="alert">
+            <p>New work order assigned to you:</p>
+            <p><strong>Replace Inverter</strong></p>
+          </div>
+          <div class="alert alert-danger" role="alert">
+            <p>Critical system alert:</p>
+            <p><strong>Low Battery Warning</strong></p>
           </div>
         </div>
       </div>
