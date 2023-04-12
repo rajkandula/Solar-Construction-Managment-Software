@@ -114,7 +114,7 @@ Future plans for this project include:
 - Enhanced reporting and analytics features
 - Improved user interface and user experience
 
-### Sprint3 Version 1.1.0
+### Sprint3 Version 1.1.1
 
 - Operational Managers page
 - end coustomer page
