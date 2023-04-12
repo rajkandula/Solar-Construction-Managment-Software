@@ -100,7 +100,7 @@ Future plans for this project include:
 
 ## Release Notes
 
-### Version 1.0.0
+### Sprint1 Version 1.0.0
 
 - Initial release
 - Basic project tracking and task assignment features
@@ -108,10 +108,14 @@ Future plans for this project include:
 - Notifications for task updates
 - Report generation
 
-### Version 1.1.0
+### Sprint2 Version 1.1.0
 
 - Added user authentication and authorization
 - Enhanced reporting and analytics features
 - Improved user interface and user experience
 
+### Sprint3 Version 1.1.0
 
+- Operational Managers page
+- end coustomer page
+- home page enhancement
