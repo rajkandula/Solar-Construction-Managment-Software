@@ -1,35 +1,31 @@
-name: CI/CD Pipeline
+name: Update Main Version
+run-name: Move ${{ github.event.inputs.major_version }} to ${{ github.event.inputs.target }}
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      target:
+        description: The tag or reference to use
+        required: true
+      major_version:
+        type: choice
+        description: The major version to update
+        options:
+          - v3
+          - v2
 
 jobs:
-  build:
+  tag:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: npm install # or yarn install, depending on your project setup
-
-    - name: Build HTML template
-      run: npm run build # or any other build command that is applicable for your project
-
-    - name: Deploy HTML template
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Git config
       run: |
-        # Add deployment script here, e.g., using FTP, SFTP, or any other method you prefer
-        
-        
-    - name: Deploy HTML template
-  run: |
-    # Install lftp
-    sudo apt-get update
-    sudo apt-get install lftp -y
-
-    # Connect to FTP server and deploy files
-    lftp -c "open -u $FTP_USER,$FTP_PASSWORD $FTP_HOST; mirror -R -e ./dist /remote/path"
-
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+    - name: Tag new target
+      run: git tag -f ${{ github.event.inputs.major_version }} ${{ github.event.inputs.target }}
+    - name: Push new tag
+      run: git push origin ${{ github.event.inputs.major_version }} --force
