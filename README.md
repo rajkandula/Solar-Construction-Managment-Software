@@ -102,11 +102,14 @@ Future plans for this project include:
 
 ### Sprint1 Version 1.0.0
 
-- Initial release
-- Basic project tracking and task assignment features
-- Dashboard for project progress and task deadlines
-- Notifications for task updates
-- Report generation
+- Register Page
+- Landing Page
+- Sales Page
+- Login Page
+- backend for register page  
+- backend for login  page
+- bugs fixing
+
 
 ### Sprint2 Version 1.1.0
 
