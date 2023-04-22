@@ -1,0 +1,19 @@
+{
+  "name": "solar_project",
+  "version": "1.0.0",
+  "description": "Solar project team15",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charan, Anita, Raghu, harsha",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajkandula/CS555-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rajkandula/CS555-Project/issues"
+  },
+  "homepage": "https://github.com/rajkandula/CS555-Project#readme"
+}
