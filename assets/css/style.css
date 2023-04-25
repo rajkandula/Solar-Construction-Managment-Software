@@ -388,7 +388,14 @@ h6 {
   padding-bottom: 10%;
   padding: auto;
 }
-
+/* sales page */
+#mainportfolio {
+  width: 100%;
+  height: 20vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding: auto;
+}
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
