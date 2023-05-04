@@ -9,9 +9,7 @@ You can access the website for the Solar Project Management tool [here](https://
 
 ## Product Link (App)
 
-You can access the App for the Solar Project Management tool [here]().
-
-https://user-images.githubusercontent.com/112989454/236159670-6f13808e-cf15-4e83-a691-4c934ea90feb.mov
+You can access the App for the Solar Project Management tool [here](https://user-images.githubusercontent.com/112989454/236159670-6f13808e-cf15-4e83-a691-4c934ea90feb.mov)
 
 
 
