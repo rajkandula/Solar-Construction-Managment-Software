@@ -11,6 +11,10 @@ You can access the website for the Solar Project Management tool [here](https://
 
 You can access the App for the Solar Project Management tool [here]().
 
+https://user-images.githubusercontent.com/112989454/236159670-6f13808e-cf15-4e83-a691-4c934ea90feb.mov
+
+
+
 
 ## Jira
 
@@ -119,9 +123,11 @@ Future plans for this project include:
 
 ### Sprint2 Version 1.1.0
 
-- Added user authentication and authorization
-- Enhanced reporting and analytics features
-- Improved user interface and user experience
+- About Page 
+- Service Page 
+- Construction Crew Page 
+- Contact Form 
+- Bugs Fixing
 
 ### Sprint3 Version 1.1.1
 
