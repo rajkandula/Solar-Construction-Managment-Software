@@ -7,11 +7,11 @@ Welcome to the Solar Project Management tool developed by Team 15 for CS555 proj
 You can access the website for the Solar Project Management tool [here](https://solar-project-e77fc.web.app/).
 
 
-## Product Link (App)
+## Mobile App Download (Link)
 
-You can access the App for the Solar Project Management tool [here](https://user-images.githubusercontent.com/112989454/236159670-6f13808e-cf15-4e83-a691-4c934ea90feb.mov)
+You can access the App for the Solar Project Management tool [here](https://youtu.be/RjVucHXlfbw)
 
-
+You can Now download app [here](https://drive.google.com/file/d/15T5quSH6Np83rC8eUt2QJxAbEVliUiYy/view?usp=share_link)
 
 
 ## Jira
