@@ -132,3 +132,10 @@ Future plans for this project include:
 - Operational Managers page
 - end coustomer page
 - home page enhancement
+
+### Sprint4 Version 1.1.2
+
+- Solar Calculator
+- Solar News
+- Solar Blog
+
