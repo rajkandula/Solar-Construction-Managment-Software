@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Solar Calculator</h1>
+  <h1>{{result}}{{data}}</h1>
+
+  <form action="/calculate" method="POST">
+    <div class="form-group">
+      <label for="energyConsumption">Energy Consumption (kWh)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="energyConsumption"
+        name="energyConsumption"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="solarEfficiency">Solar Efficiency (%)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="solarEfficiency"
+        name="solarEfficiency"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="solarRadiation">Solar Radiation (kWh/m²/day)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="solarRadiation"
+        name="solarRadiation"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calculate</button>
+  </form>
+</div>
