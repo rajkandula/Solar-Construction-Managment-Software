@@ -1,0 +1,36 @@
+<!-- orderhistory.hbs -->
+
+<h1>Order History</h1>
+
+<div class="table-box">
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User ID</th>
+        <th>Panel Type</th>
+        <th>Power Output</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Delivery Timeline</th>
+        <th>Description</th>
+        <th>Date Posted</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orderHistory}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{userId}}</td>
+          <td>{{panelType}}</td>
+          <td>{{powerOutput}}</td>
+          <td>{{quantity}}</td>
+          <td>{{price}}</td>
+          <td>{{deliveryTimeline}}</td>
+          <td>{{description}}</td>
+          <td>{{date_posted}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

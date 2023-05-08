@@ -1,0 +1,52 @@
+<h1>Create Order</h1>
+<form action="/submitOrder" method="post" autocomplete="on">
+  {{!-- <div>
+    <label for="userId">{{uid}}</label>
+    <input type="text" id="userId" name="userId" required />
+  </div> --}}
+  <div>
+    {{! <input type="text" id="panelType" name="panelType" required /> }}
+
+    <label for="pet-select">Please Select Role type*</label>
+
+    <select name="panelType" id="panelType">
+      <option value="">--Please choose an option--</option>
+      <option value="Residential_Solar">Residential Solar</option>
+      <option value="Commercial_Solar">Commercial Solar</option>
+      <option value="Battery_Storage">Battery Storage</option>
+
+    </select>
+  </div>
+  <div>
+    <label for="powerOutput">Power Output:</label>
+    <input type="text" id="powerOutput" name="powerOutput" required />
+  </div>
+  <div>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" required />
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    {{! <input type="number" id="price" name="price" required /> }}
+
+    <label for="pet-select">Please Select Role type*</label>
+
+    <select name="price" id="price">
+      <option value="">--Please choose an option--</option>
+      <option value="1500$">Residential Solar 1500$</option>
+      <option value="800$">Commercial Solar 800$</option>
+      <option value="2500$">Battery Storage 2500$</option>
+    </select>
+  </div>
+  <div>
+    <label for="deliveryTimeline">Delivery Timeline:</label>
+    <input type="text" id="deliveryTimeline" name="deliveryTimeline" required />
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

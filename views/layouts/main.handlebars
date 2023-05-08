@@ -1,0 +1,40 @@
+{{! This will be your default layout for all handlebars file rendered. This will be inherited by all other templates. }}
+{{! Refer lecture code to learn more on how this works }}
+
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <title>{{title}}</title>
+
+    <link rel="stylesheet" href="/public/css/styles.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+    ></script>
+    <style>
+      /* Add some basic styles for better presentation */ body { font-family:
+      Arial, sans-serif; margin: 20px; } h1 { margin-bottom: 20px; } .panel {
+      border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+
+    </style>
+
+  </head>
+  <body>
+    <header>
+      {{!-- {{> partials/navbar}} --}}
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+  </body>
+</html>
