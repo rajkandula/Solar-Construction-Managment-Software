@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Solar News</h1>
+  <div class="row">
+    {{#each newsArticles}}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{{imageURL}}" class="card-img-top" alt="{{title}}" />
+          <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{description}}</p>
+            <a href="{{articleURL}}" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
