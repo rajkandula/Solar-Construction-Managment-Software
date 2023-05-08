@@ -1,0 +1,50 @@
+<form
+  id="registartion-form"
+  autocomplete="on"
+  method="post"
+  action="http://localhost:3000/getOrders"
+>
+
+  <label for="pet-select"> Select Status:</label>
+
+  <select name="operations_select" id="operations_select">
+    <option value="">--Please choose an option--</option>
+    <option value="construction">Approved</option>
+    <option value="manager">Rejected</option>
+    <option value="construction">In-Progress</option>
+    <option value="coustomer">Completed</option>
+  </select>
+
+  <h1>Solar Panel Requests</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Request ID</th>
+        <th>User ID</th>
+        <th>Panel Type</th>
+        <th>Power Output</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Delivery Timeline</th>
+        <th>Description</th>
+        <th>Date Posted</th>
+      </tr>
+    </thead>
+    <a href="#">
+      <tbody>
+        {{#each data.history}}
+          <tr>
+
+            <td style="border: 1px solid #ccc;">{{status}}</td>
+            <td style="border: 1px solid #ccc;">{{comment}}</td>
+            <td style="border: 1px solid #ccc;">{{approved_by}}</td>
+            <td style="border: 1px solid #ccc;">{{date_posted}}</td>
+
+          </tr>
+        {{/each}}
+      </tbody>
+    </a>
+  </table>
+
+  <input id="submit-button" type="submit" value="Submit" /></form>

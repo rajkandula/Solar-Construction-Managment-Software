@@ -1,0 +1,39 @@
+<h1>Solar Panel Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request ID</th>
+      <th>User ID</th>
+      <th>Panel Type</th>
+      <th>Power Output</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Delivery Timeline</th>
+      <th>Description</th>
+      <th>Date Posted</th>
+    </tr>
+  </thead>
+  <a href="#">
+    <tbody>
+      {{#each data}}
+        <tr>
+          <td style="border: 2px solid #ccc;"><a
+              href="/panels/{{_id}}"
+            >{{_id}}</a></td>
+          <td style="border: 1px solid #ccc;"><a
+              href="/users/{{userId}}"
+            >{{userId}}</a></td>
+          <td style="border: 1px solid #ccc;">{{panelType}}</td>
+          <td style="border: 1px solid #ccc;">{{powerOutput}}</td>
+          <td style="border: 1px solid #ccc;">{{quantity}}</td>
+          <td style="border: 1px solid #ccc;">{{price}}</td>
+          <td style="border: 1px solid #ccc;">{{deliveryTimeline}}</td>
+          <td style="border: 1px solid #ccc;">{{description}}</td>
+          <td style="border: 1px solid #ccc;">{{date_posted}}</td>
+
+        </tr>
+      {{/each}}
+    </tbody>
+  </a>
+</table>
