@@ -140,4 +140,4 @@ const getUserById = async (id) => {
   return userr_id;
 };
 
-module.exports = { createUser, checkUser };
+module.exports = { createUser, checkUser, getUserById, getUserByUsername };

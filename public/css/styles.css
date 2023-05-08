@@ -50,18 +50,6 @@ th {
   border-radius: 4px;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-}
-
 .landing-image {
   position: relative;
   background-image: url("path/to/your/image.jpg");

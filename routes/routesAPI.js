@@ -221,7 +221,7 @@ router.route("/orderHistory").get(async (req, res) => {
 });
 router.route("/panels/:id").get(async (req, res) => {
   //code here for GET
-  //Create a User by sending u and p.
+  //
 
   var user_id = req.params["id"];
   var newOrder = await orders.getOrderById(user_id);
@@ -429,16 +429,19 @@ router.route("/login").post(async (req, res) => {
 router.route("/protected").get(async (req, res) => {
   //code here for GET
   date_time = Date();
+  const vid = req.session.uid;
 
-  console.log("sesion", req.session.user);
-  console.log("sesion", req.session.utype);
-  console.log("sesion", req.session.username);
+  var userDetails = await userss.getUserById(vid);
+  console.log("usertype:", userDetails.utype);
+
   if (req.session.user) {
     res.render("private", {
       title: "Welcome",
       date_time: date_time,
       user: req.session.user,
     });
+  } else if (userDetails.utype == "sales") {
+    console.log("hello charan");
   } else {
     res.render("forbiddenAccess", { title: "Error" });
   }
