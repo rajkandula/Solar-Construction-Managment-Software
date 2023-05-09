@@ -14,7 +14,7 @@ Please refer to our project's Wiki page [here](https://github.com/rajkandula/CS5
 Click on the image below to watch a video demonstration of our Solar Project Management tool:
 
 <!-- [![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/8tX7jDgXXX0/1.jpg)](https://youtu.be/8tX7jDgXXX0) -->
- [![Solar Project Management 2023 - Team 15 (AgSp)](https://youtu.be/G2qlfsOQgL4/1.jpg)](https://youtu.be/G2qlfsOQgL4)
+ [![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/G2qlfsOQgL4/1.jpg)](https://youtu.be/G2qlfsOQgL4)
 ## Landing Page Update  
 Here's a screenshot of the updated landing page for our Solar Project Management tool:
 
