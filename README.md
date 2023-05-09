@@ -2,23 +2,39 @@
 
 Welcome to the Solar Project Management tool developed by Team 15 for CS555 project.
 
+## Product Link (Website)
+
+You can access the website for the Solar Project Management tool [here](https://solar-project-e77fc.web.app/).
+
+
+## Mobile App Download (Link)
+
+You can access the App for the Solar Project Management tool [here](https://youtu.be/RjVucHXlfbw)
+
+You can Now download app [here](https://drive.google.com/file/d/15T5quSH6Np83rC8eUt2QJxAbEVliUiYy/view?usp=share_link)
+
 
 ## Jira
+
 You can find our project's Jira board [here](https://team15agile1.atlassian.net/jira/core/projects/ST/board).
 
 ## Project Wiki Page
+
 Please refer to our project's Wiki page [here](https://github.com/rajkandula/CS555-Project/wiki) for additional documentation and information.
 
-## Solar Project Video Demonstration 
+## Solar Project Video Demonstration
 
 Click on the image below to watch a video demonstration of our Solar Project Management tool:
 
-<!-- [![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/8tX7jDgXXX0/1.jpg)](https://youtu.be/8tX7jDgXXX0) -->
- [![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/G2qlfsOQgL4/1.jpg)](https://youtu.be/G2qlfsOQgL4)
-## Landing Page Update  
+[![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/8tX7jDgXXX0/1.jpg)](https://youtu.be/8tX7jDgXXX0)
+
+## Landing Page Update
+
 Here's a screenshot of the updated landing page for our Solar Project Management tool:
 
-<img width="1440" alt="Screenshot 2023-05-09 at 11 57 27 AM" src="https://github.com/rajkandula/CS555-Project/assets/112989454/ed47a62e-4fe4-4eef-a378-575903cafaac">
+<img width="1440" alt="Screenshot 2023-04-11 at 2 45 30 PM" src="https://user-images.githubusercontent.com/112989454/231259588-6de2aa9e-1385-41c1-862d-432670988069.png">
+
+
 
 
 # Project Title
@@ -122,16 +138,4 @@ Future plans for this project include:
 - Solar Calculator
 - Solar News
 - Solar Blog
-
-
-# Demo Work
-## Demo Product Link (Website)
-
-You can access the website for the Solar Project Management tool [here](https://solar-project-e77fc.web.app/).
-
-## Demo Mobile App Download (Link)
-
-You can access the App for the Solar Project Management tool [here](https://youtu.be/RjVucHXlfbw)
-You can Now download app [here](https://drive.google.com/file/d/15T5quSH6Np83rC8eUt2QJxAbEVliUiYy/view?usp=share_link)
-
 
