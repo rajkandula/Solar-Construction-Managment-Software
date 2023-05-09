@@ -13,9 +13,9 @@ You should have a label for both the username and password inputs referencing th
 }}
 
 <main>
-  <h1>Login Page</h1>
+  <h1>Admin Login Page</h1>
 
-  <label for="pet-select">Please Select Role type*</label>
+  {{! <label for="pet-select">Please Select Role type*</label>
 
   <select name="pets" id="pet-select">
     <option value="">--Please choose an option--</option>
@@ -23,7 +23,7 @@ You should have a label for both the username and password inputs referencing th
     <option value="construction">Construction Crew</option>
     <option value="manager">Operational manager</option>
     <option value="coustomer">End-Coustomer</option>
-  </select>
+  </select> }}
 
   <p>Enter username and password to know more about user.</p>
   <span style="color: red;"> {{error_msg}} </span>

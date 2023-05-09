@@ -12,10 +12,12 @@
   class="img-fluid"
   style="width: 1400px; height: 200px;"
 />
+
       </div>
     </div>
   </div>
 </div> --}}
+
 
 <table>
   <thead>
@@ -50,12 +52,11 @@
   <input type="hidden" value="{{orderId}}" name="orderId" id="orderId" />
   <select name="operations_select" id="operations_select">
     <option value="">--Please choose an option--</option>
-    <option value="Approved">Approved</option>
-    <option value="Rejected">Rejected</option>
+    <option value="InProgress">In-Progress</option>
+    <option value="Completed">Completed</option>
   </select>
 
-   {{!-- <option value="inprogress">In-Progress</option>
-    <option value="completed">Completed</option> --}}
+  
   <label for="field2">Write Message:</label>
   <input type="text" id="messageText" name="messageText" required />
 

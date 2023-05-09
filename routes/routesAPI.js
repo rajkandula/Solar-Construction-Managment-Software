@@ -54,23 +54,23 @@ router
       console.log("registration_response", registration_response);
 
       if ("inserted_user" in registration_response) {
-        res.redirect("/");
+        res.redirect("/adminlogin");
       } else if ("user_exists" in registration_response) {
         res.status(400);
-        res.render("userRegister", {
-          title: "register",
+        res.render("adminlogin", {
+          title: "Admin Login",
           error_msg: " User Already Exist",
         });
       } else if ("validation_error" in registration_response) {
         res.status(400);
-        res.render("userRegister", {
-          title: "register",
+        res.render("adminlogin", {
+          title: "Admin Login",
           error_msg: registration_response.validation_error,
         });
       } else {
         res.status(500);
-        res.render("userRegister", {
-          title: "register",
+        res.render("adminlogin", {
+          title: "Admin Login",
           error_msg: "Internal Server Error",
         });
       }
@@ -199,6 +199,39 @@ router.route("/getOrders").get(async (req, res) => {
   res.render("sales/userslist", { title: "create order", data: newOrder });
 });
 
+router.route("/getOpenOrders/:id").get(async (req, res) => {
+  //code here for GET
+  //Create a User by sending u and p.
+  var id = req.params["id"];
+  var query = "Order Created";
+
+  // imageList = [];
+  // imageList.push({ src: "/images/solar2.jpg", name: "flask" });
+  var imageList = "/images/solar2.jpg";
+
+  if (id == 2) {
+    query = "Approved";
+    imageList = "/images/approved.png";
+  } else if (id == 3) {
+    query = "Rejected";
+    imageList = "/images/rejected.png";
+  } else if (id == 4) {
+    query = "InProgress";
+    imageList = "/images/working.png";
+  } else if (id == 5) {
+    query = "Completed";
+    imageList = "/images/solar_completed.jpeg";
+  }
+  var newOrder = await orders.getOrdersByStatus(query);
+  console.log(newOrder);
+  // res.json();
+  res.render("sales/userslist", {
+    title: "open orders",
+    imageList,
+    data: newOrder,
+  });
+});
+
 router.route("/getOrdersById").get(async (req, res) => {
   //code here for GET
   //Create a User by sending u and p.
@@ -211,7 +244,6 @@ router.route("/getOrdersById").get(async (req, res) => {
 router.route("/orderHistory").get(async (req, res) => {
   //code here for GET
   //Create a User by sending u and p.
-
   const hid = req.session.uid;
   console.log("hid_id", hid);
   var orderHistory = await orders.getOrderByUserId(hid);
@@ -221,43 +253,53 @@ router.route("/orderHistory").get(async (req, res) => {
 });
 router.route("/panels/:id").get(async (req, res) => {
   //code here for GET
-  //
-
-  var user_id = req.params["id"];
-  var newOrder = await orders.getOrderById(user_id);
-  console.log(newOrder);
+  var order_id = req.params["id"];
+  var newOrder = await orders.getOrderById(order_id);
+  console.log("ad", newOrder);
   // res.json(newOrder);
-  res.render("sales/approveForm", { data: newOrder });
+  var page = "constructionCrew/approveForm";
+  // var ImagePage = "/images/solar2.jpg";
+  if (req.session.utype == "construction") {
+    page = "constructionCrew/approveForm";
+  } else if (req.session.utype == "sales") {
+    page = "sales/approveForm";
+  } else if (req.session.utype == "manager") {
+    page = "sales/approveForm";
+  }
+
+  res.render(page, {
+    data: newOrder,
+    orderId: order_id,
+    userType: req.body.utype,
+  });
 });
 
 router.route("/getOrdersByUser").get(async (req, res) => {
   //code here for GET
   //Create a User by sending u and p.
-  var newOrder = await orders.getOrderByUserId("64571aea4924d589282535c4");
+  var newOrder = await orders.getOrderByUserId("6458513fd753026cb85f9744");
   console.log(newOrder);
   res.json(newOrder);
 });
 
-router.route("/updateOrder").get(async (req, res) => {
+router.route("/updateOrder").post(async (req, res) => {
   //code here for GET
   //Create a User by sending u and p.
 
-  const user_data = req.body.usernameInput;
-  const password_data = req.body.passwordInput;
-
-  const uname = req.body.unameInput;
-  const umail = req.body.umailInput;
-  const umobile = req.body.umobileInput;
-  const utype = req.body.operations_select;
+  const userid = req.session.uid;
+  const orderId = req.body.orderId;
+  const message = req.body.messageText;
+  const status = req.body.operations_select;
 
   var newOrder = await orders.updateOrderProgress(
-    "6457280a87ccdb879c6264f2",
-    "completed",
-    "we completed the project",
-    "ram"
+    orderId,
+    status,
+    message,
+    userid
   );
-  console.log(newOrder);
-  res.json(newOrder);
+  // console.log(newOrder);
+  // res.json(newOrder);
+  res.redirect("/getOrders");
 });
 
 router
@@ -291,7 +333,7 @@ router
         uname,
         umail,
         umobile,
-        utype
+        "customer"
       );
       console.log("registration_response", registration_response);
 
@@ -410,6 +452,7 @@ router.route("/login").post(async (req, res) => {
 
       req.session.user = user_data;
       req.session.uid = registration_response.data._id.toString();
+      req.session.utype = registration_response.data.utype.toString();
       console.log("aId", registration_response.data._id.toString());
       console.log("aId2", req.session.uid);
 
@@ -431,17 +474,42 @@ router.route("/protected").get(async (req, res) => {
   date_time = Date();
   const vid = req.session.uid;
 
-  var userDetails = await userss.getUserById(vid);
-  console.log("usertype:", userDetails.utype);
+  // var userDetails = await userss.getUserById(vid);
+  // console.log("usertype:", userDetails.utype);
 
-  if (req.session.user) {
+  // sales
+  // construction
+  // manager
+  // coustomer
+
+  console.log("kola", req.session.utype);
+  if (req.session.utype == "sales") {
+    console.log("hello sales");
+    res.render("sales/sales_Dashboard", {
+      title: "Sales",
+      date_time: date_time,
+      user: req.session.user,
+    });
+  } else if (req.session.utype == "construction") {
+    // console.log("hello construction");
+    res.render("constructionCrew/cc_dashboard", {
+      title: "Construction",
+      date_time: date_time,
+      user: req.session.user,
+    });
+  } else if (req.session.utype == "manager") {
+    // console.log("hello manager");
+    res.render("OperationalManager/op_dashboard", {
+      title: "Operational Manager",
+      date_time: date_time,
+      user: req.session.user,
+    });
+  } else if (req.session.utype == "customer") {
     res.render("private", {
       title: "Welcome",
       date_time: date_time,
       user: req.session.user,
     });
-  } else if (userDetails.utype == "sales") {
-    console.log("hello charan");
   } else {
     res.render("forbiddenAccess", { title: "Error" });
   }
@@ -526,14 +594,24 @@ router.get("/contactus", (req, res) => {
   res.render("home/contact", { successMessage });
 });
 
-router.post("/submitContact", async (req, res) => {
+// Express route
+router.get("/feedback", (req, res) => {
+  // Retrieve success message from session, if available
+  const successMessage = req.session.successMessage;
+  // Clear the success message from session
+  req.session.successMessage = null;
+
+  res.render("home/feedback", { successMessage });
+});
+
+router.post("/submitFeedback", async (req, res) => {
   const { name, email, message } = req.body;
 
   // Perform validation on the form data
   if (!name || !email || !message) {
     // Handle validation error
     req.session.errorMessage = "Please fill in all the fields";
-    res.redirect("/contactus");
+    res.redirect("/feedback");
     return;
   }
 
@@ -567,12 +645,40 @@ router.post("/submitContact", async (req, res) => {
     // Set the success message in session
     req.session.successMessage =
       "Thank you for your message! We will get back to you soon.";
-    res.redirect("/contactus");
+    res.redirect("/feedback");
   } catch (error) {
     console.error("Error processing contact form:", error);
     req.session.errorMessage =
       "An error occurred while processing the form. Please try again later.";
-    res.redirect("/contactus");
+    res.redirect("/feedback");
+  }
+});
+
+// update-status
+router.route("/updateStatus").post(async (req, res) => {
+  //code here post
+  //get text info
+  //get data and save in db
+  const status_id = req.body.uid;
+  const status_field = req.body.operations_select;
+  const message_field = req.body.messageText;
+  //const id_data = req.session.idData;
+
+  // const hid = req.session.uid;
+  console.log("hid_id", hid);
+  var orderHistory = await orders.getOrderByUserId(status_id);
+
+  try {
+    var registration_response = await orders.updateStatus(
+      status_id,
+      status_field,
+      message_field
+    );
+
+    console.log("holaaaaa", registration_response);
+    res.render("users/orderhistory", { orderHistory: orderHistory });
+  } catch (error) {
+    console.log(error);
   }
 });
 

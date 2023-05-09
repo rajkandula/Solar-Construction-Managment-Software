@@ -3,30 +3,28 @@
 
 {{!-- <div class="landing-image">
   <div class="card">
-    <div class="card-body position-relative text-center">
-  
       <div class="image-container">
+       
        <img
   src="{{imageList}}"
   alt="Solar Image"
   class="img-fluid"
   style="width: 1400px; height: 200px;"
 />
-      </div>
+
     </div>
   </div>
 </div> --}}
 
+
+
 <table>
   <thead>
     <tr>
-    
       <th>Comment</th>
        <th>Status</th>
       <th>Approved By</th>
       <th>Date Posted</th>
-     
-
     </tr>
   </thead>
   <a href="#">
@@ -39,7 +37,6 @@
           <td style="border: 1px solid #ccc;">{{approved_by}}</td>
           <td style="border: 1px solid #ccc;">{{date_posted}}</td>
       
-
         </tr>
       {{/each}}
     </tbody>
@@ -50,20 +47,23 @@
   <input type="hidden" value="{{orderId}}" name="orderId" id="orderId" />
   <select name="operations_select" id="operations_select">
     <option value="">--Please choose an option--</option>
-    <option value="Approved">Approved</option>
-    <option value="Rejected">Rejected</option>
+    <option value="InProgress">In-Progress</option>
+    <option value="Completed">Completed</option>
   </select>
 
-   {{!-- <option value="inprogress">In-Progress</option>
-    <option value="completed">Completed</option> --}}
+  
   <label for="field2">Write Message:</label>
   <input type="text" id="messageText" name="messageText" required />
 
   <button type="submit">Submit</button>
 </form>
 
+
+
+
 {{!-- {{#if userType}}
    {{> instructor_page/sidenavigation}}
 {{else}}
  {{> page/sidenavigation}}
 {{/if}} --}}
+
