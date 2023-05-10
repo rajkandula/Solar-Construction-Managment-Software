@@ -570,8 +570,22 @@ router.get("/solarblog", async (req, res) => {
   }
 });
 
-// news
+//sales page
+router.get("/salespage", async (req, res) => {
+  res.render("sales/salespage");
+});
 
+//construction crew
+router.get("/constructionpage", async (req, res) => {
+  res.render("constructionCrew/constructionpage");
+});
+
+//manager page
+router.get("/managerpage", async (req, res) => {
+  res.render("operationalManager/managerpage");
+});
+
+// news
 router.get("/solarnews", async (req, res) => {
   try {
     const newsArticles = await more.fetchNewsData();
@@ -630,7 +644,7 @@ router.post("/submitFeedback", async (req, res) => {
     });
 
     const mailOptions = {
-      from: "your-email@example.com",
+      from: "your-email@gmail.com",
       to: "charanrajkandula@gmail.com",
       subject: "New Contact Form Submission",
       text: `

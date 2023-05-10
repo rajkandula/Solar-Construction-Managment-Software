@@ -1,72 +1,12 @@
-{{! navbar main }}
-
-{{!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Home</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNav"
-    aria-controls="navbarNav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Operations
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Sales Team</a>
-          <a class="dropdown-item" href="#">Contruction Crew</a>
-          <a class="dropdown-item" href="#">Operational Managers</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">More</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
-      </li>
-      {{! <li class="nav-item">
-        <a class="nav-link" href="/contact">Call to Action</a>
-      </li> }}
-      <li class="nav-item">
-        <a class="nav-link" href="/adminlogin">Admin</a>
-      </li>
-    </ul>
-  </div>
-</nav> --}}
-
-{{!-- {{>navbar}} --}}
-
-<!-- Main content -->
-<div class="container">
-  <h1>Welcome to the User Login Page</h1>
-  <div class="row">
-    <div class="col-md-6">
-      <!-- Login form -->
+<!-- Page Content -->
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
       <h2>Login</h2>
-      <p>Enter username and password to know more about user.</p>
-      <span style="color: red;"> {{error_msg}} </span>
+      <p>Enter your username and password to log in.</p>
+      <span style="color: red;">{{error_msg}}</span>
       <form id="login-form" autocomplete="off" method="post" action="/login">
         <div class="form-group">
-
           <label for="usernameInput">Username</label>
           <input
             id="usernameInput"
@@ -74,10 +14,8 @@
             name="usernameInput"
             placeholder="Username"
           />
-
         </div>
         <div class="form-group">
-
           <label for="password">Password</label>
           <input
             id="passwordInput"
@@ -85,29 +23,28 @@
             name="passwordInput"
             placeholder="Password"
           />
-
         </div>
-
         <button id="login-button" type="submit">Login</button>
       </form>
       {{#if error}}
         <h6>{{error}}</h6>
       {{/if}}
     </div>
-    <div class="col-md-6">
-      <!-- Register form -->
+  </div>
+
+  <div class="card">
+    <div class="card-body">
       <h2>Register</h2>
       <p>Register on our website</p>
-      <span style="color: red;"> {{error_msg}} </span>
+      <span style="color: red;">{{error_msg}}</span>
       <form
-        id="registartion-form"
+        id="registration-form"
         autocomplete="on"
         method="post"
         action="/register"
       >
-
         <div class="form-group">
-          <label for="username">Name</label>
+          <label for="unameInput">Name</label>
           <input
             id="unameInput"
             type="text"
@@ -116,7 +53,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="username">Mail</label>
+          <label for="umailInput">Mail</label>
           <input
             id="umailInput"
             type="text"
@@ -125,7 +62,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="username">Mobile</label>
+          <label for="umobileInput">Mobile</label>
           <input
             id="umobileInput"
             type="text"
@@ -134,7 +71,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="usernameInput">Username</label>
           <input
             id="usernameInput"
             type="text"
@@ -142,9 +79,8 @@
             placeholder="Username"
           />
         </div>
-
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="passwordInput">Password</label>
           <input
             id="passwordInput"
             type="password"
