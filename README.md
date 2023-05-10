@@ -52,7 +52,7 @@ This project aims to develop a prototype of a Solar Project Management tool that
 1. Clone the repository: `git clone https://github.com/rajkandula/CS555-Project.git`
 2. Navigate to the project directory: `cd CS555-Project`
 3. Open the project in your preferred code editor, such as Visual Studio Code.
-4. Run `index.html` in your web browser.
+4. Run `app.js` in your web browser.
 
 ## Usage
 
