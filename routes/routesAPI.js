@@ -585,6 +585,17 @@ router.get("/managerpage", async (req, res) => {
   res.render("operationalManager/managerpage");
 });
 
+//manager page
+router.get("/ChatLive", async (req, res) => {
+  var msg = "Manager";
+  if (req.session.utype == "sales") {
+    msg = "Sales";
+  } else if (req.session.utype == "construction") {
+    msg = "Constructor";
+  }
+  res.render("chat/chatlive", { msg });
+});
+
 // news
 router.get("/solarnews", async (req, res) => {
   try {

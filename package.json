@@ -1,13 +1,12 @@
 {
-  "name": "cs-546-lab-10",
+  "name": "ssw-555-solar-project",
   "version": "1.0.0",
-  "description": "My lab 10  module",
+  "description": "My Solar Project",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "node app.js"
+    "start": "node app.js"
   },
-  "author": "Charan Raj Kandula 20009238",
+  "author": "Charan, Raghu, Anita, Harsha",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
