@@ -32,6 +32,8 @@ Click on the image below to watch a video demonstration of our Solar Project Man
 
 Here's a screenshot of the updated landing page for our Solar Project Management tool:
 
+<img width="1440" alt="Screenshot 2023-05-09 at 12 27 37 PM" src="https://github.com/rajkandula/CS555-Project/assets/112989454/e71f17f6-c4b0-4817-a42f-3683dff5b5de">
+
 <img width="1440" alt="Screenshot 2023-04-11 at 2 45 30 PM" src="https://user-images.githubusercontent.com/112989454/231259588-6de2aa9e-1385-41c1-862d-432670988069.png">
 
 
