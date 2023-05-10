@@ -4,7 +4,8 @@
   "description": "My lab 10  module",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "webpack"
   },
   "author": "Charan Raj Kandula 20009238",
   "license": "ISC",
