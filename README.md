@@ -70,7 +70,7 @@ We welcome contributions from the community! If you would like to contribute to 
 
 ## Credits
 
-- [Raj Kandula](https://github.com/rajkandula) - Project Lead
+- [Raj Kandula](https://github.com/rajkandula) - Project Lead / developer
 - [Anita](https://github.com/AnittaEr) - Developer 
 - [Raghu](https://github.com/raghupola964) -  Developer
 - [Harsha](https://github.com/pharshav) -  Developer
