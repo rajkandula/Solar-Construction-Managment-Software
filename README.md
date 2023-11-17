@@ -12,21 +12,10 @@ Click on the image below to watch a video demonstration of our Solar Project Man
 [![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/G2qlfsOQgL4/1.jpg)](https://youtu.be/G2qlfsOQgL4)
 
 
-## Demo Product Link (Website)
-
-You can access the website for the Solar Project Management tool [here](https://solar-project-e77fc.web.app/).
-
-
-## Demo Mobile App Download (Link)
-
-You can access the App for the Solar Project Management tool [here](https://youtu.be/RjVucHXlfbw)
-
-You can Now download app [here](https://drive.google.com/file/d/15T5quSH6Np83rC8eUt2QJxAbEVliUiYy/view?usp=share_link)
-
 
 ## Jira
 
-You can find our project's Jira board [here](https://team15agile1.atlassian.net/jira/core/projects/ST/board).
+
 
 ## Project Wiki Page
 
