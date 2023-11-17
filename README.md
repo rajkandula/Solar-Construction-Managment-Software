@@ -1,6 +1,10 @@
 # CS555-Project
 
-Welcome to the Solar Project Management tool developed by Team 15 for CS555 project.
+Welcome to the Solar Project Management tool developed by Team 15 form class CS555.
+
+This project aims to develop a prototype of a Solar Project Management tool that facilitates communication and coordination between different stakeholders involved in a solar project, including sales teams, construction crews, operations managers, and end customers. The tool provides features such as project tracking, task assignment, notifications, and reporting, to streamline the solar project management process.
+
+
 
 ## Demo Product Link (Website)
 
