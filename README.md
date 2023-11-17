@@ -1,9 +1,15 @@
 # CS555-Project
 
-Welcome to the Solar Project Management tool developed by Team 15 form class CS555.
+Welcome to the Solar Project Management tool developed by Team 15 from class CS555.
 
 This project aims to develop a prototype of a Solar Project Management tool that facilitates communication and coordination between different stakeholders involved in a solar project, including sales teams, construction crews, operations managers, and end customers. The tool provides features such as project tracking, task assignment, notifications, and reporting, to streamline the solar project management process.
 
+project demonstration video link: https://youtu.be/G2qlfsOQgL4?feature=shared
+
+
+Click on the image below to watch a video demonstration of our Solar Project Management tool:
+
+[![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/G2qlfsOQgL4/1.jpg)](https://youtu.be/G2qlfsOQgL4)
 
 
 ## Demo Product Link (Website)
@@ -28,9 +34,6 @@ Please refer to our project's Wiki page [here](https://github.com/rajkandula/CS5
 
 ## Solar Project Video Demonstration
 
-Click on the image below to watch a video demonstration of our Solar Project Management tool:
-
-[![Solar Project Management 2023 - Team 15 (AgSp)](https://img.youtube.com/vi/8tX7jDgXXX0/1.jpg)](https://youtu.be/8tX7jDgXXX0)
 
 ## Landing Page Update
 
