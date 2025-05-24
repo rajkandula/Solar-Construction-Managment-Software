@@ -55,6 +55,10 @@ const createOrder = async (
     message: " ",
     temp: "11",
     history: [order_progress],
+    paymentIntentId: "",
+    paymentStatus: "pending",
+    amountPaid: 0,
+    currency: "USD", // Defaulting to USD as it's a common currency
   };
   console.log("new_order", new_order);
   const orderCollection = await orders();
@@ -64,7 +68,7 @@ const createOrder = async (
 
   const inserted_Order = await getOrderById(insertInfo.insertedId);
   console.log("inserted_Order", inserted_Order);
-  return { inserted_Order: true };
+  return inserted_Order;
 };
 
 const getAllOrders = async () => {
@@ -159,4 +163,113 @@ module.exports = {
   getOrderByUserId,
   updateOrderProgress,
   updateStatus,
+  updateOrderPaymentIntent,
+  updateOrderAfterSuccessfulPayment,
+  updateOrderPaymentStatus,
+};
+
+const updateOrderPaymentIntent = async (
+  orderId,
+  paymentIntentId,
+  paymentStatus
+) => {
+  if (!ObjectId.isValid(orderId)) throw "Invalid order ID";
+  if (typeof paymentIntentId !== "string" || paymentIntentId.trim() === "") {
+    throw "paymentIntentId must be a non-empty string";
+  }
+  if (typeof paymentStatus !== "string" || paymentStatus.trim() === "") {
+    throw "paymentStatus must be a non-empty string";
+  }
+
+  const orderCollection = await orders();
+  const updateResult = await orderCollection.updateOne(
+    { _id: ObjectId(orderId) },
+    { $set: { paymentIntentId: paymentIntentId, paymentStatus: paymentStatus } }
+  );
+
+  if (updateResult.matchedCount === 0) throw "Order not found";
+  if (updateResult.modifiedCount === 0)
+    throw "Order payment details not updated (they may already be set to these values)";
+
+  return await getOrderById(orderId);
+};
+
+const updateOrderAfterSuccessfulPayment = async (
+  orderId,
+  amountPaid,
+  currency,
+  paymentStatus,
+  newOrderStatus // e.g., "Payment Complete"
+) => {
+  if (!ObjectId.isValid(orderId)) throw "Invalid order ID";
+  if (typeof amountPaid !== "number" || amountPaid < 0) {
+    throw "amountPaid must be a non-negative number";
+  }
+  if (typeof currency !== "string" || currency.trim() === "" || currency.length !== 3) {
+    throw "currency must be a 3-letter string code";
+  }
+  if (typeof paymentStatus !== "string" || paymentStatus.trim() === "") {
+    throw "paymentStatus must be a non-empty string";
+  }
+   if (typeof newOrderStatus !== "string" || newOrderStatus.trim() === "") {
+    throw "newOrderStatus must be a non-empty string";
+  }
+
+  const orderCollection = await orders();
+  const updateFields = {
+    amountPaid: amountPaid,
+    currency: currency.toUpperCase(),
+    paymentStatus: paymentStatus,
+    status: newOrderStatus, // Update the main order status
+  };
+
+  // Add to history
+  const currentDate = new Date();
+  const datePosted = currentDate.toISOString().split("T")[0];
+  const historyEntry = {
+    status: newOrderStatus,
+    comment: `Payment of ${amountPaid} ${currency.toUpperCase()} processed. Payment status: ${paymentStatus}.`,
+    approved_by: "Stripe Webhook", // System event
+    date_posted: datePosted,
+  };
+
+  const updateResult = await orderCollection.updateOne(
+    { _id: ObjectId(orderId) },
+    { $set: updateFields, $push: { history: historyEntry } }
+  );
+
+  if (updateResult.matchedCount === 0) throw "Order not found";
+  if (updateResult.modifiedCount === 0) throw "Order not updated";
+
+  return await getOrderById(orderId);
+};
+
+const updateOrderPaymentStatus = async (orderId, paymentStatus) => {
+  if (!ObjectId.isValid(orderId)) throw "Invalid order ID";
+  if (typeof paymentStatus !== "string" || paymentStatus.trim() === "") {
+    throw "paymentStatus must be a non-empty string";
+  }
+
+  const orderCollection = await orders();
+  
+  // Add to history
+  const currentDate = new Date();
+  const datePosted = currentDate.toISOString().split("T")[0];
+  const historyEntry = {
+    status: `Payment ${paymentStatus}`, // More descriptive status for history
+    comment: `Order payment status updated to: ${paymentStatus}.`,
+    approved_by: "Stripe Webhook", // System event
+    date_posted: datePosted,
+  };
+
+  const updateResult = await orderCollection.updateOne(
+    { _id: ObjectId(orderId) },
+    { $set: { paymentStatus: paymentStatus }, $push: { history: historyEntry } }
+  );
+
+  if (updateResult.matchedCount === 0) throw "Order not found";
+  // It's okay if modifiedCount is 0 if the status was already set to this value by another process.
+  // However, the history entry should still be added.
+
+  return await getOrderById(orderId);
 };

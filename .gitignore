@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Configuration
+config/settings.json
+
+# IDE specific files
+.idea/
+.vscode/
+
+# OS specific files
+.DS_Store
+Thumbs.db

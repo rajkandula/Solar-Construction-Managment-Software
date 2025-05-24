@@ -10,6 +10,8 @@ const userss = require("../data/users");
 const orders = require("../data/orders");
 const more = require("../data/more");
 const { users } = require("../config/mongoCollections");
+const settings = require("../config/settings.json");
+const stripe = require("stripe")(settings.stripeSecretKey);
 
 // node mailer
 const nodemailer = require("nodemailer");
@@ -182,13 +184,26 @@ router
     //   success_msg: "Creatd Order",
     // });
 
-    res.render("private", {
-      msg: "Successfully Order created",
-      title: "Welcome",
-      date_time: date_time,
-      user: req.session.user,
-    });
-  });
+    // res.render("private", { // Original render
+    //   msg: "Successfully Order created",
+    //   title: "Welcome",
+    //   date_time: date_time,
+    //   user: req.session.user,
+    // });
+
+    if (registration_response && registration_response._id) { // Check if a valid order object is returned
+        res.status(201).json({ success: true, order: registration_response });
+    } else {
+        // Handle cases where order creation might not have been successful as expected
+        // or if registration_response does not contain the expected order object
+        console.error("Order creation failed or returned unexpected data:", registration_response);
+        res.status(500).json({ success: false, message: "Order creation failed or returned unexpected data." });
+    }
+  } catch (error) {
+    console.error("Error in /submitOrder:", error);
+    res.status(500).json({ success: false, message: "Internal Server Error while creating order." });
+  }
+});
 
 router.route("/getOrders").get(async (req, res) => {
   //code here for GET
@@ -456,16 +471,31 @@ router.route("/login").post(async (req, res) => {
       console.log("aId", registration_response.data._id.toString());
       console.log("aId2", req.session.uid);
 
-      res.redirect("/");
+      // res.redirect("/"); // Original redirect
+      res.status(200).json({
+        user: req.session.user,
+        uid: req.session.uid,
+        utype: req.session.utype,
+        message: "Login successful"
+      });
     } else if ("validation_error" in registration_response) {
-      res.status(400);
-      res.render("userLogin", {
-        title: "login",
+      res.status(400).json({
+        title: "login", // Keep title for consistency if frontend expects it
         error_msg: registration_response.validation_error,
+      });
+    } else {
+      // Generic error if 'authenticatedUser' or 'validation_error' are not present
+      res.status(500).json({
+        title: "login",
+        error_msg: "An unexpected error occurred during login.",
       });
     }
   } catch (e) {
-    console.log(e);
+    console.error("Login error:", e); // Log the actual error on the server
+    res.status(500).json({
+      title: "login",
+      error_msg: "Internal Server Error",
+    });
   }
 });
 
@@ -708,3 +738,97 @@ router.route("/updateStatus").post(async (req, res) => {
 });
 
 module.exports = router;
+
+// Stripe Create Payment Intent Route
+router.post("/api/orders/:orderId/create-payment-intent", async (req, res) => {
+  const { orderId } = req.params;
+
+  try {
+    const order = await orders.getOrderById(orderId);
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    // Amount in cents
+    const amountInCents = Math.round(order.price * 100);
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amountInCents,
+      currency: order.currency || "USD", // Use order currency or default to USD
+      payment_method_types: ["card"],
+      metadata: { order_id: orderId },
+    });
+
+    // Update local order with paymentIntentId
+    await orders.updateOrderPaymentIntent(orderId, paymentIntent.id, "pending");
+
+    res.json({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error("Error creating payment intent:", error);
+    res.status(500).json({ error: "Failed to create payment intent" });
+  }
+});
+
+// Stripe Webhook Handler
+// express.raw middleware must be used before defining the route or applied directly
+// For simplicity, applying directly if app.use(express.raw...) is not already global for JSON.
+// If you have a global express.json(), this needs to be handled carefully.
+// One way is to define this route before app.use(express.json()) or use a conditional middleware.
+// Assuming express.json() is not strictly applied before this specific path or this is fine in the setup.
+
+router.post("/api/stripe-webhook", express.raw({type: 'application/json'}), async (req, res) => {
+  const sig = req.headers["stripe-signature"];
+  const webhookSecret = settings.stripeWebhookSecret;
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+  } catch (err) {
+    console.error(`⚠️  Webhook signature verification failed.`, err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  // Handle the event
+  switch (event.type) {
+    case "payment_intent.succeeded":
+      const paymentIntentSucceeded = event.data.object;
+      const orderIdSucceeded = paymentIntentSucceeded.metadata.order_id;
+      const amountPaid = paymentIntentSucceeded.amount / 100; // convert back to dollars
+      const currency = paymentIntentSucceeded.currency.toUpperCase();
+      
+      console.log(`PaymentIntent for order ${orderIdSucceeded} was successful!`);
+      // Update order in your database
+      try {
+        await orders.updateOrderAfterSuccessfulPayment(
+          orderIdSucceeded,
+          amountPaid,
+          currency,
+          "succeeded", // paymentStatus
+          "Payment Complete" // newOrderStatus
+        );
+      } catch (dbError) {
+        console.error("Error updating order after successful payment:", dbError);
+        // Optionally, you might want to return a 500 to Stripe to retry if this is critical
+      }
+      break;
+    case "payment_intent.payment_failed":
+      const paymentIntentFailed = event.data.object;
+      const orderIdFailed = paymentIntentFailed.metadata.order_id;
+      
+      console.log(`PaymentIntent for order ${orderIdFailed} failed.`);
+      // Update order in your database
+      try {
+        await orders.updateOrderPaymentStatus(orderIdFailed, "failed");
+      } catch (dbError) {
+        console.error("Error updating order payment status to failed:", dbError);
+      }
+      break;
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  // Return a 200 response to acknowledge receipt of the event
+  res.json({ received: true });
+});

@@ -2,5 +2,8 @@
   "mongoConfig": {
     "serverUrl": "mongodb://localhost:27017/",
     "database": "SolarTeam15"
-  }
+  },
+  "stripePublishableKey": "YOUR_STRIPE_PUBLISHABLE_KEY",
+  "stripeSecretKey": "YOUR_STRIPE_SECRET_KEY",
+  "stripeWebhookSecret": "YOUR_STRIPE_WEBHOOK_SECRET"
 }
