@@ -148,62 +148,48 @@ router
     });
   })
   .post(async (req, res) => {
-    //code here for POST
-    //get data and save to database
+    try { // try should be moved here
+        const kid = req.session.uid;
 
-    const kid = req.session.uid;
+        console.log("KID", kid);
+        const panelTypeInput = req.body.panelType;
+        const powerInput = req.body.powerOutput;
 
-    console.log("KID", kid);
-    const panelTypeInput = req.body.panelType;
-    const powerInput = req.body.powerOutput;
+        const quantityInput = req.body.quantity;
+        const priceInput = req.body.price;
+        const deliveryTimelineInput = req.body.deliveryTimeline;
+        const descriptionInput = req.body.description;
+        // res.render("userRegister", { user: data });
 
-    const quantityInput = req.body.quantity;
-    const priceInput = req.body.price;
-    const deliveryTimelineInput = req.body.deliveryTimeline;
-    const descriptionInput = req.body.description;
-    // res.render("userRegister", { user: data });
+        console.log("panelTypeInput", panelTypeInput);
+        console.log("powerInput", powerInput);
+        console.log("priceInput", priceInput);
 
-    console.log("panelTypeInput", panelTypeInput);
-    console.log("powerInput", powerInput);
-    console.log("priceInput", priceInput);
+        //Create a User by sending u and p.
+        var registration_response = await orders.createOrder(
+            kid,
+            panelTypeInput,
+            powerInput,
+            quantityInput,
+            priceInput,
+            deliveryTimelineInput,
+            descriptionInput
+        );
+        console.log("registration_response: create order", registration_response);
 
-    //Create a User by sending u and p.
-    var registration_response = await orders.createOrder(
-      kid,
-      panelTypeInput,
-      powerInput,
-      quantityInput,
-      priceInput,
-      deliveryTimelineInput,
-      descriptionInput
-    );
-    console.log("registration_response: create order", registration_response);
-
-    // res.render("userRegister", {
-    //   title: "register",
-    //   success_msg: "Creatd Order",
-    // });
-
-    // res.render("private", { // Original render
-    //   msg: "Successfully Order created",
-    //   title: "Welcome",
-    //   date_time: date_time,
-    //   user: req.session.user,
-    // });
-
-    if (registration_response && registration_response._id) { // Check if a valid order object is returned
-        res.status(201).json({ success: true, order: registration_response });
-    } else {
-        // Handle cases where order creation might not have been successful as expected
-        // or if registration_response does not contain the expected order object
-        console.error("Order creation failed or returned unexpected data:", registration_response);
-        res.status(500).json({ success: false, message: "Order creation failed or returned unexpected data." });
+        if (registration_response && registration_response._id) { // Check if a valid order object is returned
+            res.status(201).json({ success: true, order: registration_response });
+        } else {
+            // Handle cases where order creation might not have been successful as expected
+            // or if registration_response does not contain the expected order object
+            console.error("Order creation failed or returned unexpected data:", registration_response);
+            res.status(500).json({ success: false, message: "Order creation failed or returned unexpected data." });
+        }
+    } catch (error) { // catch should be here, inside the post callback
+        console.error("Error in /submitOrder:", error);
+        res.status(500).json({ success: false, message: "Internal Server Error while creating order." });
     }
-  } catch (error) {
-    console.error("Error in /submitOrder:", error);
-    res.status(500).json({ success: false, message: "Internal Server Error while creating order." });
-  }
-});
+  });
 
 router.route("/getOrders").get(async (req, res) => {
   //code here for GET
