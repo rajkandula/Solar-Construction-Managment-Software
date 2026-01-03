@@ -1,4 +1,12 @@
-Project: Solar Construction Management Software
+# System Design of the Project
+
+<img width="1024" height="1024" alt="Gemini_Generated_Image_zamxrozamxrozamx" src="https://github.com/user-attachments/assets/46df0531-dd6b-4d03-a016-e8c103a96350" />
+
+
+
+
+
+# Project: Solar Construction Management Software
 
 Description: Solar Construction Management Software is an all-in-one website that provides 4 different operational dashboards for clients, sales-team, construction, and managers. It allows clients to request an order, the sales team to manage the orders, the construction crew to finish the installations, and managers to take care of business. The objective was to offer software that facilitates the sales process for solar solutions by efficiently coordinating efforts between sales teams, clients, operational managers, and construction crews.
 
